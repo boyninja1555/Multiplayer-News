@@ -7,7 +7,7 @@ let headline: string = "Welcome to Multiplayer News!"
 const minHeadlineLength = 30
 const maxHeadlineLength = 60
 
-export function GET(_: NextApiRequest) {
+export function GET() {
     return NextResponse.json(<ApiResponse>{
         status: true,
         data: headline,
