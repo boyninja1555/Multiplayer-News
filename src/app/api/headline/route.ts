@@ -5,30 +5,30 @@ import { NextResponse } from "next/server"
 declare global {
     namespace NodeJS {
         interface Global {
-            headline?: string
-            clients?: Set<WritableStreamDefaultController>
+            headline: string
+            clients: Set<WritableStreamDefaultController>
         }
     }
 
-    var headline: string
-    var clients: Set<WritableStreamDefaultController>
+    let headline: string
+    let clients: Set<WritableStreamDefaultController>
 }
 
-if (!global.headline) {
-    global.headline = "Welcome to Multiplayer News!"
+if (!headline) {
+    headline = "Welcome to Multiplayer News!"
 }
 
-if (!global.clients) {
-    global.clients = new Set()
+if (!clients) {
+    clients = new Set()
 }
 
 const minHeadlineLength = 30
 const maxHeadlineLength = 60
 
-export function GET(req: NextApiRequest) {
+export function GET(_: NextApiRequest) {
     return NextResponse.json(<ApiResponse>{
         status: true,
-        data: global.headline,
+        data: headline,
     })
 }
 
@@ -51,7 +51,7 @@ export async function POST(request: Request) {
         })
     }
 
-    global.headline = newHeadline
+    headline = newHeadline
     return NextResponse.json(<ApiResponse>{
         status: true,
         message: "The headline was updated!",

@@ -2,7 +2,7 @@
 
 import "@/css/live-feed.css"
 import type ApiResponse from "@/types/api-response"
-import React, { useEffect, useState, useRef, ChangeEventHandler } from "react"
+import React, { useEffect, useState, useRef } from "react"
 
 export default function Home() {
 	const [headlines, setHeadlines] = useState<string[]>(["Loading…"])
@@ -51,7 +51,7 @@ export default function Home() {
 				const res = await resObj.json() as ApiResponse
 				setFormStatus(res.status)
 				setFormMessage(res.message || null)
-			} catch (e) {
+			} catch {
 				setFormStatus(false)
 				setFormMessage("The headline could not be set! The API is down.")
 			}
