@@ -1,4 +1,3 @@
-import type { NextApiRequest } from "next"
 import type ApiResponse from "@/types/api-response"
 import { NextResponse } from "next/server"
 
