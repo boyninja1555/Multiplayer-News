@@ -2,25 +2,7 @@ import type { NextApiRequest } from "next"
 import type ApiResponse from "@/types/api-response"
 import { NextResponse } from "next/server"
 
-declare global {
-    namespace NodeJS {
-        interface Global {
-            headline: string
-            clients: Set<WritableStreamDefaultController>
-        }
-    }
-
-    let headline: string
-    let clients: Set<WritableStreamDefaultController>
-}
-
-if (!headline) {
-    headline = "Welcome to Multiplayer News!"
-}
-
-if (!clients) {
-    clients = new Set()
-}
+let headline: string = "Welcome to Multiplayer News!"
 
 const minHeadlineLength = 30
 const maxHeadlineLength = 60
